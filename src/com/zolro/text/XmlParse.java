@@ -42,7 +42,7 @@ public class XmlParse {
 		List<T> list = new ArrayList<T>();
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document document = db.parse(filePath);// »»ÎªDocument¶ÔÏó
+		Document document = db.parse(filePath);// æ¢ä¸ºDocumentå¯¹è±¡
 		NodeList placeList = document.getElementsByTagName(cla.getSimpleName());
 		Field[] fields = cla.getDeclaredFields();
 		for (int i = 0; i < placeList.getLength(); i++) {
@@ -55,54 +55,25 @@ public class XmlParse {
 					str.append("set");
 					str.append(field.getName().substring(0, 1).toUpperCase());
 					str.append(field.getName().substring(1));
-					/*
-					 * String method = "set" + (field.getName().substring(0, 1)
-					 * .toUpperCase() + field.getName() .substring(1));
-					 */
 					Method m = cla.getMethod(str.toString(), String.class);
 					m.invoke(t, value);
 				}
 			}
-			list.add(t);
-			/*
-			 * Node place = placeList.item(i); NodeList placeNodes =
-			 * place.getChildNodes();
-			 */
-			/*
-			 * for (int j = 0; j < placeNodes.getLength(); j++) {
-			 * if(placeNodes.item(j).getChildNodes().getLength()>1){
-			 * System.out.println(placeNodes.item(j).getNodeName()); } String
-			 * value=creaTObject(fileds[0],placeNodes.item(j));
-			 * System.out.println(value); if (value != null) { Node name =
-			 * placeNodes.item(j); String method = "set" +
-			 * (fileds[0].getName().substring(0, 1) .toUpperCase() +
-			 * fileds[0].getName() .substring(1)); Method m =
-			 * cla.getMethod(method, String.class); m.invoke(t, value); } for
-			 * (Field filed : fileds) { String
-			 * value=creaTObject(filed,placeNodes.item(j));
-			 * System.out.println("filedValue:"+value); if (value != null) {
-			 * Node name = placeNodes.item(j); String method = "set" +
-			 * (filed.getName().substring(0, 1) .toUpperCase() + filed.getName()
-			 * .substring(1)); Method m = cla.getMethod(method, String.class);
-			 * m.invoke(t, value); }
-			 * 
-			 * } }
-			 */
-
+			list.add(t);		
 		}
 		return list;
 	}
 
 	public static void testExample(String txt) {
 		try {
-			// 1¡¢´ò¿ªÁ÷
+			// 1ã€æ‰“å¼€æµ
 			Writer w = new FileWriter("g:/Jinweidu.txt", true);
-			// 2¡¢Ğ´ÈëÄÚÈİ
+			// 2ã€å†™å…¥å†…å®¹
 			w.write(txt);
-			// 3¡¢¹Ø±ÕÁ÷
+			// 3ã€å…³é—­æµ
 			w.close();
 		} catch (IOException e) {
-			System.out.println("ÎÄ¼şĞ´Èë´íÎó£º" + e.getMessage());
+			System.out.println("æ–‡ä»¶å†™å…¥é”™è¯¯ï¼š" + e.getMessage());
 		}
 	}
 }
