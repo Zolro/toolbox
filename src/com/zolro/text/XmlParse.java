@@ -64,16 +64,4 @@ public class XmlParse {
 		return list;
 	}
 
-	public static void testExample(String txt) {
-		try {
-			// 1、打开流
-			Writer w = new FileWriter("g:/Jinweidu.txt", true);
-			// 2、写入内容
-			w.write(txt);
-			// 3、关闭流
-			w.close();
-		} catch (IOException e) {
-			System.out.println("文件写入错误：" + e.getMessage());
-		}
-	}
 }
